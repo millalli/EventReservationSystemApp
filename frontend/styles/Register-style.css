@@ -1,0 +1,111 @@
+/* --- 1. L'Arrière-plan de la page entière --- */
+.register-view {
+    /* Le même dégradé que votre CTA pour la cohérence */
+    background: linear-gradient(135deg, #020024 0%, #1a1a5e 50%, #5db0e3 100%);
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* --- 2. La Carte Blanche au centre --- */
+.register-card {
+    background-color: white;
+    height: 680px;
+    max-width: 450px; /* Largeur idéale pour un formulaire */
+    width: 90%;       /* Responsive sur mobile */
+    border-radius: 20px; /* Coins bien arrondis */
+    padding: 40px;
+     /* Ombre portée douce pour l'effet de flottaison */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+
+    /* Centrage du contenu interne */
+    align-items: center;
+    text-align: center;
+}
+.login-card {
+    background-color: white;
+    height: 580px;
+    max-width: 450px; /* Largeur idéale pour un formulaire */
+    width: 90%;       /* Responsive sur mobile */
+    border-radius: 20px; /* Coins bien arrondis */
+    padding: 40px;
+    /* Ombre portée douce pour l'effet de flottaison */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+
+    /* Centrage du contenu interne */
+    align-items: center;
+    text-align: center;
+}
+
+
+/* --- 3. Typographie --- */
+.register-title {
+    color: #1a1a5e; /* Bleu foncé */
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+}
+
+.register-subtitle {
+    color: #718096; /* Gris doux */
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* --- 4. Les Champs de saisie (Vaadin Inputs) --- */
+/* On cible tous les champs de texte à l'intérieur de la carte */
+.register-card vaadin-text-field,
+.register-card vaadin-email-field,
+.register-card vaadin-password-field {
+    padding-bottom: 10px; /* Espace entre les champs */
+}
+.login-card vaadin-text-field,
+.login-card vaadin-email-field,
+.login-card vaadin-password-field {
+    padding-bottom: 10px; /* Espace entre les champs */
+}
+
+/* --- 5. Le Bouton --- */
+.register-button {
+    background: linear-gradient(90deg, #1a1a5e 0%, #6b46c1 100%) !important; /* Dégradé Violet */
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    height: 50px !important;
+    border-radius: 12px !important; /* Coins légèrement arrondis */
+    border: none !important;
+    cursor: pointer;
+    margin-top: 20px; /* Espace au dessus du bouton */
+    box-shadow: 0 4px 15px rgba(107, 70, 193, 0.4); /* Lueur violette */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.register-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(107, 70, 193, 0.6);
+}
+.register-view {
+    /* 1. On définit un dégradé plus large (4 couleurs) */
+    background: linear-gradient(-45deg, #020024, #1a1a5e, #5db0e3, #6b46c1);
+
+    /* 2. On zoome dans le background (400%) pour pouvoir le déplacer */
+    background-size: 400% 400%;
+
+    /* 3. L'animation : dure 15s, boucle infinie */
+    animation: gradientBG 15s ease infinite;
+
+    /* Le reste de vos styles... */
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* 4. La définition des étapes de l'animation (Keyframes) */
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

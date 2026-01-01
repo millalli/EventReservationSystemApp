@@ -1,0 +1,662 @@
+/*
+ * ---------------------------------------
+ * 1. AppLayout - Supprimer le fond blanc
+ * ---------------------------------------
+ */
+vaadin-app-layout {
+    background: transparent !important;
+}
+
+vaadin-app-layout::part(navbar) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+vaadin-app-layout::part(content) {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/*
+ * ---------------------------------------
+ * 2. Conteneur Centralisé (Navbar flottante)
+ * ---------------------------------------
+ */
+.centered-navbar-container {
+    background-color: rgba(30, 30, 30, 0.7); /* Plus transparent */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    padding: 16px 30px;
+    width: calc(100% - 40px);
+    margin: 10px 20px;
+    backdrop-filter: blur(10px); /* Effet de flou moderne */
+}
+
+/* ---------------------------------------
+ * 3. Styles des Liens de Navigation
+ * ---------------------------------------
+ */
+.nav-link {
+    color: white;
+    background: transparent;
+    border: none;
+    padding: 10px 16px;
+    transition: background-color 0.2s, color 0.2s;
+    cursor: pointer;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+/* ---------------------------------------
+ * 4. Style du Bouton Principal (Sign Up)
+ * ---------------------------------------
+ */
+.nav-button-primary {
+    background: #0099ff;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 1px solid #0099ff;
+    box-shadow: 0 2px 4px rgba(0, 153, 255, 0.5);
+    text-decoration: none;
+}
+
+.nav-button-primary:hover {
+    background: #0077cc;
+    border-color: #0077cc;
+    color: white;
+}
+
+/* ---------------------------------------
+ * 5. Style du Logo
+ * ---------------------------------------
+ */
+.centered-navbar-container H1 {
+    color: white;
+    margin-right: 20px;
+}
+
+/* ---------------------------------------
+ * 6. Hero Section - Plein écran
+ * ---------------------------------------
+ */
+/* HERO SECTION */
+/* 1. LE CONTENEUR PRINCIPAL */
+/* On retire l'image d'ici, on garde juste la structure */
+.hero-section {
+    width: 100%;
+    min-height: 80vh; /* Ou 100vh selon votre choix */
+    position: relative; /* IMPORTANT : permet de caler l'image à l'intérieur */
+    overflow: hidden;   /* IMPORTANT : cache les bords de l'image quand elle zoome */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Plus de background-image ici ! */
+}
+
+/* 2. L'IMAGE ANIMÉE (Pseudo-élément) */
+/* C'est une calque virtuel qui se met au fond */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Votre image */
+    background-image: url("images/hero3.png");
+    background-size: cover;
+    background-position: center;
+
+    /* L'ordre des calques */
+    z-index: -2; /* Tout au fond */
+
+    /* L'animation : Nom | Durée | Type | Répétition */
+    animation: softZoom 20s ease-in-out infinite alternate;
+}
+
+/* 3. LE FILTRE SOMBRE (Overlay) */
+/* On le sépare pour qu'il reste fixe et protège la lisibilité du texte */
+.hero-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* Votre filtre sombre */
+    z-index: -1; /* Devant l'image, mais derrière le texte */
+}
+
+/* 4. DÉFINITION DE L'ANIMATION (Keyframes) */
+@keyframes softZoom {
+    0% {
+        transform: scale(1); /* Taille normale */
+    }
+    100% {
+        transform: scale(1.15); /* Zoom léger à 115% */
+    }
+}
+
+/* CONTENU DU HERO */
+.hero-content {
+    text-align: center;
+    color: white;
+    max-width: 900px;
+    padding: 20px;
+}
+
+.hero-welcome {
+    letter-spacing: 3px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: whitesmoke;
+}
+
+.hero-big-text {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin: 0;
+    color: whitesmoke;
+    line-height: 1.2;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #111;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* SECTION GRISE */
+.section-grey {
+    background-color: #f5f5f5;
+    width: 100%;
+    padding: 60px 20px;
+}
+/* --- Animation Keyframes --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px); /* Commence 40px plus bas */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Arrive à sa place finale */
+    }
+}
+
+/* --- Classe de base pour l'animation --- */
+.anim-text {
+    opacity: 0; /* Important : invisible au départ */
+    animation: fadeInUp 0.8s ease-out forwards; /* 'forwards' garde l'état final (visible) */
+}
+
+/* --- Délais pour l'effet de cascade (Staggering) --- */
+.delay-100 { animation-delay: 0.2s; } /* Pour "Welcome" */
+.delay-200 { animation-delay: 0.4s; } /* Pour Line 1 */
+.delay-300 { animation-delay: 0.6s; } /* Pour Line 2 */
+.delay-400 { animation-delay: 0.8s; } /* Pour Line 3 */
+
+/* --- Conteneur des cartes --- */
+.event-card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espace entre les cartes */
+    flex-wrap: wrap; /* Permet de passer à la ligne sur petits écrans */
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* --- La Carte elle-même --- */
+.event-card {
+    width: 280px;      /* Largeur fixe comme sur l'image */
+    height: 380px;     /* Hauteur fixe pour le format portrait */
+    border-radius: 24px; /* Coins très arrondis */
+    background-size: cover;
+    background-position: center;
+    position: relative; /* Pour positionner le texte par-dessus */
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Ombre douce */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* Effet au survol de la carte */
+.event-card:hover {
+    transform: translateY(-5px); /* La carte monte un peu */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+/* --- Filtre sombre pour rendre le texte lisible --- */
+/* On ajoute un dégradé noir léger en haut de l'image */
+.event-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; /* Le dégradé ne couvre que le haut */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    z-index: 1;
+}
+
+/* --- Le nom de l'entreprise --- */
+.card-company {
+    position: relative;
+    z-index: 2; /* Au-dessus du dégradé */
+    color: white;
+    margin: 20px 0 5px 20px; /* Position en haut à gauche */
+    font-size: 1.4rem;
+    font-weight: 800; /* Texte bien gras */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* --- Le lieu --- */
+.card-location {
+    position: relative;
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.9);
+    margin-left: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+/* --- Section Globale --- */
+.category-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9; /* Fond très léger pour détacher du blanc pur */
+}
+
+/* --- Conteneur Flex (Ligne) --- */
+.category-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Espace entre les boîtes */
+    flex-wrap: wrap; /* Permet de passer à la ligne sur mobile */
+}
+
+/* --- La Carte de Catégorie --- */
+.category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: white;
+    width: 140px;      /* Carré */
+    height: 140px;
+    border-radius: 15px; /* Coins arrondis */
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Ombre très subtile */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Animation fluide */
+    border: 1px solid transparent;
+}
+
+/* --- Effet Hover (Survol) --- */
+.category-card:hover {
+    transform: translateY(-8px); /* La carte "saute" vers le haut */
+    box-shadow: 0 10px 20px rgba(0, 153, 255, 0.2); /* Ombre bleutée */
+    border-color: #0099ff; /* Bordure bleue */
+}
+
+/* --- Style de l'icône --- */
+.category-icon {
+    width: 40px !important;
+    height: 40px !important;
+    color: #555; /* Gris foncé par défaut */
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+/* L'icône devient bleue au survol de la carte */
+.category-card:hover .category-icon {
+    color: #0099ff;
+}
+
+/* --- Style du Texte --- */
+.category-text {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #333;
+    letter-spacing: 0.5px;
+}
+/* --- Section Globale --- */
+.testimonial-section {
+    padding: 80px 20px;
+    background-color: #fff; /* Fond blanc ou très légèrement gris */
+}
+
+/* --- Conteneur Flex --- */
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* --- La Carte --- */
+.testimonial-card {
+    background: white;
+    border: 1px solid #e0e0e0; /* Bordure très fine */
+    border-radius: 12px;
+    padding: 30px;
+    width: 300px; /* Largeur fixe comme sur l'image */
+    min-height: 400px; /* Hauteur minimale pour aligner */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pousse le logo en bas */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* --- Étoiles --- */
+.star-rating {
+    margin-bottom: 15px;
+    color: #6b46c1; /* Le violet de votre image (Purple) */
+    /* OU utilisez votre bleu : #0099ff */
+}
+
+.star-rating vaadin-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* --- Citation --- */
+.testimonial-quote {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 30px;
+    flex-grow: 1; /* Prend l'espace disponible */
+}
+
+/* --- Infos Utilisateur --- */
+.testimonial-avatar {
+    --vaadin-avatar-size: 48px;
+    background-color: #f0f0f0 !important;
+    color: #333 !important;
+}
+
+.user-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #000;
+}
+
+.user-role {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* --- Logo Entreprise (Bas de carte) --- */
+.company-logo-text {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #6b46c1; /* Même couleur que les étoiles ou le thème */
+    letter-spacing: -0.5px;
+}
+
+/* =========================================
+   1. LA SECTION PRINCIPALE (Le conteneur)
+   ========================================= */
+.cta-section {
+    /* Le dégradé Bleu nuit -> Violet/Lavande */
+    background: linear-gradient(90deg, #020024 0%, #1a1a5e 40%, #a78bfa 100%);
+
+    /* Forme du cadre */
+    border-radius: 24px;
+    margin: 40px auto; /* Centré horizontalement */
+    padding: 60px 80px; /* Espace intérieur (Haut/Bas Gauche/Droite) */
+
+    /* Dimensions */
+    max-width: 1200px;
+    width: 95%; /* Prend 95% de la largeur sur petits écrans */
+    box-sizing: border-box;
+
+    /* Flexbox pour écarter le texte (gauche) des images (droite) */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px; /* Espace minimum entre le texte et les images */
+
+    /* Ombre portée subtile pour donner du relief */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================
+   2. LE CONTENU TEXTE (Gauche)
+   ========================================= */
+.cta-content {
+    /* Force le conteneur texte à prendre l'espace nécessaire mais pas plus */
+    max-width: 500px;
+}
+
+/* Le Titre H2 */
+.cta-title {
+    color: white;
+    font-family: 'Inter', system-ui, sans-serif; /* Police moderne */
+    font-size: 3rem; /* Taille imposante (48px) */
+    font-weight: 700;
+    line-height: 1.1; /* Interligne serré */
+    margin-top: 0;
+    margin-bottom: 30px; /* Espace avant le bouton */
+}
+
+/* Le Bouton "Explore Events" */
+.cta-button {
+    background-color: white !important; /* Force le blanc par dessus le style Vaadin */
+    color: #1a1a5e !important; /* Texte couleur bleu foncé */
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    border-radius: 50px !important; /* Bords totalement ronds */
+    height: 55px !important;
+    padding: 0 40px !important;
+    border: none !important;
+    cursor: pointer;
+
+    /* Animation douce */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Effet au survol du bouton */
+.cta-button:hover {
+    transform: translateY(-3px); /* Le bouton monte un peu */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    background-color: #f8f9fa !important;
+}
+
+/* =========================================
+   3. LES IMAGES (Droite)
+   ========================================= */
+.cta-images-container {
+    /* Géré par Vaadin HorizontalLayout, mais on ajoute du gap ici au cas où */
+    display: flex;
+    gap: 15px; /* Espace entre chaque photo */
+}
+
+/* Le style "Arche" des images */
+.arch-img {
+    width: 130px;      /* Largeur fixe */
+    height: 180px;     /* Hauteur fixe */
+    object-fit: cover; /* Important : coupe l'image pour remplir la forme sans déformer */
+
+    /* LA FORME D'ARCHE :
+       Haut-Gauche (100px) | Haut-Droit (100px) | Bas-Droit (0) | Bas-Gauche (0) */
+    border-radius: 100px 100px 0 0;
+
+    border: 3px solid rgba(255, 255, 255, 0.1); /* Petit contour subtil (optionnel) */
+}
+
+/* =========================================
+   4. RESPONSIVE (Mobile)
+   ========================================= */
+/* Si l'écran fait moins de 900px de large */
+@media (max-width: 900px) {
+    .cta-section {
+        /* On passe en colonne : Texte en haut, Images en bas */
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .cta-content {
+        align-items: center !important; /* Force le centrage des éléments Vaadin */
+        max-width: 100%;
+        margin-bottom: 40px;
+    }
+
+    /* Pour centrer le bouton Vaadin sur mobile */
+    .cta-content > vaadin-button {
+        margin: 0 auto;
+    }
+
+    .cta-title {
+        font-size: 2.2rem; /* Titre plus petit sur mobile */
+    }
+
+    /* Ajustement des images sur mobile */
+    .arch-img {
+        width: 100px;
+        height: 140px;
+    }
+}
+
+
+
+/* --- Conteneur Principal du Footer --- */
+.app-footer {
+    background-color: #020024; /* Le bleu très sombre de votre thème */
+    color: #e2e8f0; /* Blanc cassé / Gris clair pour le texte */
+    padding: 60px 20px 20px 20px; /* Plus d'espace en haut */
+    margin-top: auto; /* Pousse le footer tout en bas si la page est courte */
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* --- Disposition des Colonnes --- */
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Important pour le mobile */
+    max-width: 1200px;
+    margin: 0 auto; /* Centré */
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Ligne de séparation subtile */
+}
+
+.footer-col {
+    flex: 1; /* Chaque colonne prend la même largeur */
+    min-width: 200px; /* Largeur min avant de passer à la ligne */
+    padding: 0;
+}
+
+/* --- Typographie --- */
+.app-footer h3.footer-brand {
+    color: white;
+    margin: 0 0 15px 0;
+    font-size: 1.5rem;
+}
+
+.app-footer h4 {
+    color: #a78bfa; /* Violet clair pour les titres de section */
+    margin: 0 0 15px 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+/* --- Liens de Navigation --- */
+a.footer-link {
+    text-decoration: none;
+    color: #e2e8f0;
+    margin-bottom: 10px;
+    display: block; /* Pour qu'ils soient l'un sous l'autre */
+    transition: color 0.2s ease, transform 0.2s ease;
+    font-size: 0.95rem;
+}
+
+a.footer-link:hover {
+    color: #a78bfa; /* Devient violet au survol */
+    transform: translateX(5px); /* Petit mouvement vers la droite */
+}
+
+/* --- Boutons Sociaux --- */
+.social-button {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1) !important; /* Fond semi-transparent */
+    border-radius: 50%; /* Cercle parfait */
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-button:hover {
+    background: #a78bfa !important; /* Fond violet au survol */
+    color: #020024 !important; /* Icône devient foncée */
+    transform: translateY(-3px);
+}
+
+.social-icons-container {
+    gap: 10px;
+}
+
+/* --- Copyright (Bas de page) --- */
+.footer-copyright {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+}
+
+/* --- Responsive Mobile --- */
+@media (max-width: 768px) {
+    .footer-columns {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-col {
+        align-items: center; /* Centre le contenu des colonnes */
+    }
+
+    .social-icons-container {
+        justify-content: center;
+    }
+}

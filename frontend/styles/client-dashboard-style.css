@@ -1,0 +1,113 @@
+/* --- DASHBOARD --- */
+.dashboard-view {
+    background-color: #f8fafc; /* Light gray background */
+    min-height: 100vh;
+}
+
+.dashboard-title {
+    margin-bottom: 5px;
+    color: #0f172a;
+}
+
+.dashboard-subtitle {
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+/* Stats Row */
+.dashboard-stats-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Wraps on mobile */
+}
+
+.stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    flex: 1;
+    min-width: 200px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid #e2e8f0;
+}
+
+.stat-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* Card Colors */
+.card-blue { border-bottom: 4px solid #3b82f6; }
+.card-blue .stat-icon { color: #3b82f6; }
+
+.card-green { border-bottom: 4px solid #10b981; }
+.card-green .stat-icon { color: #10b981; }
+
+.card-purple { border-bottom: 4px solid #8b5cf6; }
+.card-purple .stat-icon { color: #8b5cf6; }
+
+/* Main Content Layout */
+.dashboard-content-layout {
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.dashboard-section {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.dashboard-card-simple {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Notifications */
+.notification-item {
+    padding: 12px;
+    border-left: 3px solid #cbd5e1;
+    background: #f1f5f9;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    border-radius: 0 4px 4px 0;
+}
+
+.notification-item.important {
+    border-left-color: #f59e0b;
+    background: #fffbeb;
+    color: #92400e;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .dashboard-content-layout {
+        flex-direction: column;
+    }
+    .dashboard-section, .dashboard-sidebar {
+        width: 100% !important;
+    }
+}

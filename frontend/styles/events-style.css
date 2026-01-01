@@ -1,0 +1,254 @@
+/* --- Global Layout --- */
+.events-view {
+    background-color: #f8fafc;
+    padding: 0 !important;
+    overflow-x: hidden;
+}
+
+/* --- 1. HERO SECTION --- */
+.events-hero-section {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    background-image: url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.events-hero-overlay {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.events-hero-content {
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    color: white;
+}
+
+.events-hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.events-hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #f1f5f9;
+    display: block;
+}
+
+.main-search-field {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.main-search-field input {
+    background: white !important;
+    border-radius: 50px;
+    height: 50px;
+    padding-left: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+/* --- 2. FILTER BAR --- */
+.filter-bar-container {
+    background-color: white;
+    padding: 20px 40px;
+    margin: 30px 40px 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+}
+
+.filters-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-field {
+    width: 150px;
+    min-width: 120px;
+}
+
+.filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 10px;
+}
+
+.filter-btn {
+    height: 36px;
+}
+
+/* --- 3. GRID LAYOUT --- */
+.events-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 0 40px 60px 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ================================================================
+   4. CARDS (SCOPED FIX)
+   We add ".events-view" before these classes.
+   This ensures we DO NOT break the Home Page styles.
+   ================================================================
+*/
+
+.events-view .event-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f1f5f9;
+    height: 100%;
+}
+
+.events-view .event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.events-view .card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.events-view .card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.events-view .card-title {
+    margin: 5px 0;
+    font-size: 1.25rem;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.events-view .badge-category {
+    align-self: flex-start;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #2563eb;
+    background: #eff6ff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.events-view .card-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.events-view .card-footer-info {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px dashed #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.events-view .card-price {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.events-view .card-button {
+    background-color: #2563eb;
+    color: white;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+/* --- 5. FOOTER (Global) --- */
+.events-footer {
+    width: 100%;
+    background-color: #0f172a;
+    color: white;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 800px) {
+    .filter-bar-container {
+        margin: 0;
+        border-radius: 0;
+        padding: 20px;
+    }
+
+    .filters-layout {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-field {
+        width: 100%;
+    }
+
+    .filter-actions {
+        width: 100%;
+        justify-content: space-between;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .events-grid-layout {
+        padding: 20px;
+        grid-template-columns: 1fr;
+    }
+}
