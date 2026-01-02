@@ -2,7 +2,7 @@
 
 Application web complète développée avec **Spring Boot** et **Vaadin** permettant la gestion et la réservation d'événements culturels (concerts, théâtre, conférences, etc.).
 
-## 📋 Contexte du Projet
+## Contexte du Projet
 
 Ce projet a été réalisé dans le cadre du module Java Avancé. L'objectif est de fournir une plateforme centralisée où :
 
@@ -10,7 +10,7 @@ Ce projet a été réalisé dans le cadre du module Java Avancé. L'objectif est
 - Les **Clients** consultent et réservent des places.
 - Les **Administrateurs** supervisent l'ensemble de la plateforme.
 
-## 🛠️ Technologies Utilisées
+##  Technologies Utilisées
 
 **Backend :** Java 17+, Spring Boot 3.x
 **Frontend :** Vaadin 24.x (Framework UI 100% Java)
@@ -19,7 +19,7 @@ Ce projet a été réalisé dans le cadre du module Java Avancé. L'objectif est
 
 - **Build :** Maven
 
-## 🚀 Installation et Lancement
+##  Installation et Lancement
 
 1.  **Cloner le projet :**
 
@@ -27,7 +27,7 @@ En raison de problèmes de connexion (timeout) rencontrés lors du déploiement 
 
 Pour pallier ce problème, **une vidéo de démonstration complète** montrant l'exécution et les fonctionnalités de l'application est fournie
 
-### 🎥 Vidéo d'exécution
+###  Vidéo d'exécution
 
 2.  **Lancer l'application :**
 
@@ -38,7 +38,7 @@ Pour pallier ce problème, **une vidéo de démonstration complète** montrant l
 3.  **Accéder à l'application :**
     - Ouvrez votre navigateur sur : `http://localhost:8080`
 
-## 🔑 Identifiants de Test (Données Initiales)
+##  Identifiants de Test (Données Initiales)
 
 Conformément au cahier des charges, les utilisateurs suivants sont pré-configurés:
 
@@ -54,7 +54,7 @@ Le script SQL permettant d'injecter les données initiales (utilisateurs par dé
 
 **Chemin du fichier :** `src/main/resources/insert_data.sql`
 
-## 🏗️ Structure du Projet
+##  Structure du Projet
 
 Le code source est organisé selon une architecture modulaire claire dans le package `com.event.reservation` :
 
@@ -75,13 +75,13 @@ Le code source est organisé selon une architecture modulaire claire dans le pac
   - `client/` : Réservations client (`MyReservations`, `ReservationForm`).
   - `event/` : Détails et listes d'événements.
 
-## ✨ Fonctionnalités Principales
+##  Fonctionnalités Principales
 
 - **Authentification & Inscription** : Sécurisée avec gestion des rôles (Admin, Organizer, Client).
 - **Gestion des Événements** : CRUD complet, upload d'images, catégorisation.
 - **Réservations** : Processus de réservation en temps réel avec calcul de prix et gestion de capacité.
 - **Tableaux de Bord** : Vues statistiques dédiées pour chaque type d'utilisateur.
 
-## 👤 Auteur
+##  Auteur
 
 Projet réalisé par [Hafsa Elhouaoui] - Année 2025/2026.
